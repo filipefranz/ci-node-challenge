@@ -1,9 +1,8 @@
-name: ci-node-chanllenge-workflow
+name: ci-node-challenge-workflow
 on: 
   pull_request:
     branches:
       - develop
-      - master
 jobs:
   check-application:
     runs-on: ubuntu-latest
@@ -12,6 +11,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18.19.1
+      - run: npm install
       - run: npm test
 
       - name: SonarCloud Scan
